@@ -1,5 +1,4 @@
-let n = prompt("Nhập vào một số nguyên dương n");
-n = parseInt(n);
+let n = parseInt(prompt("Nhập vào một số nguyên dương n"));
 
 if (isNaN(n) || n <= 0) {
     console.log("Vui lòng nhập một số nguyên dương.");
