@@ -2,7 +2,7 @@ let char = prompt("nhap vao chuoi bat ki");
 function sapXep(char) {
   let so = [];
   let chu = [];
-  let dB = [];
+  let kiTu = [];
   for (var i = 0; i <= char.length; i++) {
     if (
       (char[i] >= "a" && char[i] <= "z") ||
@@ -15,6 +15,6 @@ function sapXep(char) {
       dB.push(char[i]);
     }
   }
-  console.log(...chu, ...so, ...dB);
+  console.log(...chu, ...so, ...kiTu);
 }
 sapXep(char);
