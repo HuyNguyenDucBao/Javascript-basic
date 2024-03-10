@@ -1,6 +1,6 @@
 var product = {
     id: "123",
-    name: "Product Name",
+    name: "Product A ",
     price: 100,
     quantity: 10
 };
