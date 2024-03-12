@@ -108,20 +108,11 @@ function findJobById(id) {
     return null;
 }
 
-// Hàm menu để hiển thị menu chính
-function menu() {
-    console.log('1. Thêm công việc mới (addJob)');
-    console.log('2. In ra danh sách công việc (printJobs)');
-    console.log('3. Tìm kiếm công việc theo id (findJobById)');
-    console.log('0. Thoát');
-}
-
 // Hàm main để điều khiển chương trình
 function main() {
     let choice;
     do {
-        menu();
-        choice = Number(prompt("Nhập lựa chọn của bạn: "));
+        choice = Number(prompt('1. Thêm công việc mới (addJob)\n2. In ra danh sách công việc (printJobs)\n3. Tìm kiếm công việc theo id (findJobById)\n0. Thoát\nNhập lựa chọn của bạn: '));
         switch(choice) {
             case 1:
                 addJob();
@@ -141,3 +132,4 @@ function main() {
         }
     } while(choice !== 0);
 }
+main();

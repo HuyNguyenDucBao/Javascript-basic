@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thay đổi nội dung</title>
+</head>
+<body>
+
+<p id="content">Nội dung hiện tại</p>
+<button onclick="thayDoiNoiDung()">Thay đổi nội dung</button>
+
+<script>
+function thayDoiNoiDung() {
+    var pElement = document.getElementById("content");
+    pElement.textContent = "Nội dung mới đã được thay đổi!";
+}
+</script>
+
+</body>
+</html>
