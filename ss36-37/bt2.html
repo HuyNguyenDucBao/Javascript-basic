@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button id="myButton" onclick="changeText()">Click me!</button>
+
+<script>
+function changeText() {
+  var button = document.getElementById("myButton");
+  if (button.innerHTML == "Click me!") {
+    button.innerHTML = "You clicked me!";
+  } else {
+    button.innerHTML = "Click me!";
+  }
+}
+</script>
+
+</body>
+</html>

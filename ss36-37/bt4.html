@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<input type="number" id="input1" oninput="calculateSum()">
+<input type="number" id="input2" oninput="calculateSum()">
+<input type="number" id="sum" readonly>
+
+<script>
+function calculateSum() {
+  var input1 = document.getElementById("input1").value;
+  var input2 = document.getElementById("input2").value;
+  document.getElementById("sum").value = Number(input1) + Number(input2);
+}
+</script>
+
+</body>
+</html>

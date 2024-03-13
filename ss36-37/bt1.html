@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validation Form</title>
+</head>
+<body>
+    <label for="answer">Nhập câu trả lời của bạn:</label><br>
+    <input type="text" id="answer" name="answer"><br>
+    <button onclick="validateInput()">Submit</button>
+    <p id="notification"></p>
+
+    <script>
+        function validateInput() {
+            var input = document.getElementById("answer").value;
+            if (input.length > 10) {
+                document.getElementById("notification").innerHTML = "Thông báo: Không hợp lệ";
+            } else {
+                document.getElementById("notification").innerHTML = "Thông báo: Thành công";
+            }
+        }
+    </script>
+</body>
+</html>
