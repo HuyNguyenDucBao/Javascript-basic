@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form id="myForm">
+  <h2>Thông tin người mua</h2>
+  <label for="name">Họ và tên:</label><br>
+  <input type="text" id="name" name="name" required oninput="this.value = this.value.toUpperCase()"><br>
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" required><br>
+  <label for="date">Ngày đặt:</label><br>
+  <input type="text" id="date" name="date" required pattern="\d{1,2}-\d{1,2}-\d{4}"><br>
+  <input type="checkbox" id="copy" name="copy" onclick="copyInfo()">
+  <label for="copy">Tôi là người nhận</label><br>
+  <h2>Thông tin người nhận</h2>
+  <label for="rname">Họ và tên:</label><br>
+  <input type="text" id="rname" name="rname"><br>
+  <label for="remail">Email:</label><br>
+  <input type="email" id="remail" name="remail"><br>
+  <input type="submit" value="Đặt hàng">
+  <input type="reset" value="Nhập lại">
+</form>
+
+<script>
+function copyInfo() {
+  if (document.getElementById("copy").checked) {
+    document.getElementById("rname").value = document.getElementById("name").value;
+    document.getElementById("remail").value = document.getElementById("email").value;
+  } else {
+    document.getElementById("rname").value = "";
+    document.getElementById("remail").value = "";
+  }
+}
+
+document.getElementById("myForm").onsubmit = function() {
+  alert("Đặt hàng thành công" + (document.getElementById("copy").checked ? ", email đã gửi tới cho quý khách" : ""));
+}
+</script>
+
+</body>
+</html>
