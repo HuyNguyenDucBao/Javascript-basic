@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="styles.css">
+<title>Weight Converter</title>
+<script>
+function weightConverter(source,valNum) {
+  valNum = parseFloat(valNum);
+  if (isNaN(valNum)) {
+    alert("Vui lòng nhập một số hợp lệ");
+    return;
+  }
+  var inputPounds = document.getElementById("inputPounds");
+  var inputKilograms = document.getElementById("inputKilograms");
+  var inputOunces = document.getElementById("inputOunces");
+  var inputGrams = document.getElementById("inputGrams");
+  var inputStones = document.getElementById("inputStones");
+  if (source=="inputPounds") {
+    inputKilograms.value=(valNum/2.2046).toFixed(2);
+    inputOunces.value=(valNum*16).toFixed(2);
+    inputGrams.value=(valNum/0.0022046).toFixed(0);
+    inputStones.value=(valNum*0.071429).toFixed(2);
+  }
+  if (source=="inputKilograms") {
+    inputPounds.value=(valNum*2.2046).toFixed(2);
+    inputOunces.value=(valNum*35.274).toFixed(2);
+    inputGrams.value=(valNum*1000).toFixed(0);
+    inputStones.value=(valNum*0.1574).toFixed(2);
+  }
+  if (source=="inputOunces") {
+    inputPounds.value=(valNum/16).toFixed(2);
+    inputKilograms.value=(valNum/35.274).toFixed(2);
+    inputGrams.value=(valNum*28.34952).toFixed(0);
+    inputStones.value=(valNum/224).toFixed(2);
+  }
+  if (source=="inputGrams") {
+    inputPounds.value=(valNum*0.00220462).toFixed(2);
+    inputKilograms.value=(valNum/1000).toFixed(2);
+    inputOunces.value=(valNum*0.035274).toFixed(2);
+    inputStones.value=(valNum*0.000157473).toFixed(2);
+  }
+  if (source=="inputStones") {
+    inputPounds.value=(valNum*14).toFixed(2);
+    inputKilograms.value=(valNum*6.35029).toFixed(2);
+    inputOunces.value=(valNum*224).toFixed(2);
+    inputGrams.value=(valNum*6350.29).toFixed(0);
+  }
+}
+</script>
+</head>
+<body>
+
+<h1>Weight Converter</h1>
+<p>Type a value in any of the fields to convert between weight measurements:</p>
+
+Pounds: <input id="inputPounds" type="number" placeholder="Pounds" oninput="weightConverter('inputPounds',this.value)">
+Kilograms: <input id="inputKilograms" type="number" placeholder="Kilograms" oninput="weightConverter('inputKilograms',this.value)">
+<br><br>
+Ounces: <input id="inputOunces" type="number" placeholder="Ounces" oninput="weightConverter('inputOunces',this.value)">
+Grams: <input id="inputGrams" type="number" placeholder="Grams" oninput="weightConverter('inputGrams',this.value)">
+<br><br>
+Stones: <input id="inputStones" type="number" placeholder="Stones" oninput="weightConverter('inputStones',this.value)">
+<br><br>
+
+</body>
+</html>
