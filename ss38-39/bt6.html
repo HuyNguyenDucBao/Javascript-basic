@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Water Intake Tracker</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .cup-large {
+    width: 150px;
+    height: 300px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    margin: 20px;
+    position: relative;
+  }
+  .cup-large .fill {
+    background: #00f;
+    width: 100%;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    transition: height 0.5s ease-out;
+  }
+  .cup-large .remained {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    transition: opacity 0.5s ease-out;
+  }
+  .cup-small {
+    width: 50px;
+    height: 100px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  .cup-small.active {
+    background: #00f;
+  }
+  .cups {
+    display: flex;
+  }
+</style>
+</head>
+<body>
+
+<div class="cup-large">
+  <div class="fill" style="height: 0%;"></div>
+  <div class="remained">2L Remained</div>
+</div>
+
+<div class="cups">
+  <!-- Generate 8 small cups -->
+  <script>
+    for (let i = 0; i < 8; i++) {
+      document.write('<div class="cup-small" data-liters="0.25"></div>');
+    }
+  </script>
+</div>
+
+<script>
+  const largeCup = document.querySelector('.cup-large');
+  const smallCups = document.querySelectorAll('.cup-small');
+  const remainedText = largeCup.querySelector('.remained');
+  const fill = largeCup.querySelector('.fill');
+  let litersDrank = 0;
+
+  smallCups.forEach((cup, idx) => {
+    cup.addEventListener('click', () => {
+      litersDrank += parseFloat(cup.dataset.liters);
+      updateLargeCup();
+      highlightCups(idx);
+    });
+  });
+
+  function updateLargeCup() {
+    const totalLiters = 2;
+    const percentage = (litersDrank / totalLiters) * 100;
+    fill.style.height = `${percentage}%`;
+    remainedText.textContent = `${(totalLiters - litersDrank).toFixed(2)}L Remained`;
+    if (litersDrank >= totalLiters) {
+      remainedText.style.opacity = 0;
+    }
+  }
+
+  function highlightCups(idx) {
+    smallCups.forEach((cup, index) => {
+      if (index <= idx) {
+        cup.classList.add('active');
+      } else {
+        cup.classList.remove('active');
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
