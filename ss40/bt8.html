@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>My To Do List</h1>
+    <input type="text" id="task" placeholder="Title...">
+    <button id="addButton" onclick="addTask()">Add</button>
+    <ul id="todoList"></ul>
+
+    <script>
+        function addTask() {
+            let task = document.getElementById('task').value;
+            if (task) {
+                let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                tasks.push(task);
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+                document.getElementById('task').value = '';
+                displayTasks();
+            }
+        }
+
+        function deleteTask(index) {
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.splice(index, 1);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            displayTasks();
+        }
+
+        function displayTasks() {
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            let todoList = document.getElementById('todoList');
+            todoList.innerHTML = '';
+            for (let i = 0; i < tasks.length; i++) {
+                todoList.innerHTML += `<li>${tasks[i]} <button onclick="deleteTask(${i})">x</button></li>`;
+            }
+        }
+
+        window.onload = displayTasks;
+    </script>
+</body>
+</html>
